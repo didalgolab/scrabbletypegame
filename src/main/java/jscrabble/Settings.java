@@ -14,8 +14,9 @@ public class Settings {
     public static final int DIC_MATCH_THRESHOLD = 10000;
     public static final String VERSION = "5.0";
     public static final boolean CHECK_PACKAGE_INTEGRITY = true;
-    public static final int INTEGRITY_CHECK_NUMBER = 221261 / 10; // DEMO
-    //public static final int INTEGRITY_CHECK_NUMBER = 222140 / 10;//PRO
+    // Switch to professional mode
+    //public static final int INTEGRITY_CHECK_NUMBER = 221261 / 10; // DEMO
+    public static final int INTEGRITY_CHECK_NUMBER = 222140 / 10; // PRO
     public static final boolean DEMO = false;
     public static final boolean VERBOSE = false;
     //public static final long expiryPeriodInMillis = 1000*3600*24*7;
