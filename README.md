@@ -14,8 +14,8 @@ mvn package
 
 This will produce a runnable JAR in `target/`.
 
-The built JAR includes the dictionary and lexicon files, so no additional data
-files are needed to run the game.
+The built JAR bundles all the images along with the dictionary and lexicon
+files, so no additional data files are needed to run the game.
 
 Regards,
 Greg Kraft

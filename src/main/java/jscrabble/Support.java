@@ -11,6 +11,7 @@ import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -171,17 +172,21 @@ public final class Support {
     public static Image getImage(String name) {
         java.net.URL url = Support.class.getResource(name);
         if(url != null) {
-            Image image = Toolkit.getDefaultToolkit().getImage(url);
-            if(image != null) {
-                synchronized(tracker) {
-                    tracker.addImage(image, 0);
-                    try {
-                        tracker.waitForAll();
-                    } catch (InterruptedException e) {
+            try {
+                return ImageIO.read(url);
+            } catch (IOException ex) {
+                Image image = Toolkit.getDefaultToolkit().getImage(url);
+                if(image != null) {
+                    synchronized(tracker) {
+                        tracker.addImage(image, 0);
+                        try {
+                            tracker.waitForAll();
+                        } catch (InterruptedException e) {
+                        }
+                        tracker.removeImage(image);
                     }
-                    tracker.removeImage(image);
+                    return image;
                 }
-                return image;
             }
         }
         return null;
